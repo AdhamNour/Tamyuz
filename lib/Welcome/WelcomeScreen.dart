@@ -8,6 +8,10 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('لماذا نحن هنا'),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.save))],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -58,7 +62,8 @@ class WelcomeScreen extends StatelessWidget {
                   onPressed: () {},
                   child: const Text('انشاء حساب',
                       style: TextStyle(
-                          color: Color.fromARGB(200, 44, 62, 80), fontSize: 24)),
+                          color: Color.fromARGB(200, 44, 62, 80),
+                          fontSize: 24)),
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white),
