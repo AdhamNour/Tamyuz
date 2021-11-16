@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:tamuz_application/Authentication/Authentication.dart';
+import 'package:tamuz_application/shared/Components/Button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -8,10 +10,6 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('لماذا نحن هنا'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.save))],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -56,32 +54,18 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextButton(
-                  onPressed: () {},
-                  child: const Text('انشاء حساب',
-                      style: TextStyle(
-                          color: Color.fromARGB(200, 44, 62, 80),
-                          fontSize: 24)),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                      minimumSize: MaterialStateProperty.all<Size>(
-                          const Size.fromHeight(50)))),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextButton(
-                  onPressed: () {},
-                  child: const Text('تسجيل الدخول',
-                      style: TextStyle(color: Colors.white, fontSize: 24)),
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(200, 44, 62, 80)),
-                      minimumSize: MaterialStateProperty.all<Size>(
-                          const Size.fromHeight(50)))),
-            ),
+            Button(
+                text: 'انشاء حساب',
+                onPress: () {},
+                secondayColor: const Color.fromARGB(200, 44, 62, 80),
+                primaryColor: Colors.white),
+            Button(
+                text: 'تسجيل الدخول',
+                onPress: () {
+                  Navigator.of(context).pushNamed(AuthenticationScreen.routeName);
+                },
+                primaryColor: const Color.fromARGB(200, 44, 62, 80),
+                secondayColor: Colors.white),
           ],
         ),
       ),
