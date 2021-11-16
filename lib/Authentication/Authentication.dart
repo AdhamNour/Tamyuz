@@ -29,6 +29,19 @@ class AuthenticationScreen extends StatelessWidget {
                 FormInputField(label: 'ادخل كلمة المرور ')
               ],
             )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: const [
+                  Text(
+                    'نسيت كلمة المرور؟',
+                    style: TextStyle(color: Colors.blue,fontSize:20),
+                    
+                  )
+                ],
+                mainAxisAlignment: MainAxisAlignment.end,
+              ),
+            ),
             Button(
                 text: 'تسجيل الدخول',
                 onPress: () {},
