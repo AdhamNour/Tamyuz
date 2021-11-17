@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child: ListView(
+                child: Column(
                   children: [
                     const Icon(
                       Icons.stacked_bar_chart,
@@ -50,6 +50,7 @@ class WelcomeScreen extends StatelessWidget {
                       // padding: const EdgeInsets.only(),
                     )
                   ],
+                  mainAxisSize: MainAxisSize.min,
                 ),
               ),
             ),
