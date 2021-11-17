@@ -22,7 +22,6 @@ class FormInputField extends StatelessWidget {
           TextFormField(
             decoration:  InputDecoration(
                 hintText: placeholder,
-                // labelText: 'البريد الالكتروني',
                 border: const OutlineInputBorder(),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 8),
                 focusedBorder: const OutlineInputBorder(
