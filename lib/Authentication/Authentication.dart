@@ -11,11 +11,15 @@ class AuthenticationScreen extends StatelessWidget {
   static const routeName = "/authenticationScreen";
   @override
   Widget build(BuildContext context) {
+    var isSignUp = false;
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      isSignUp = ModalRoute.of(context)!.settings.arguments as bool;
+    }
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'تسجيل الدخول',
-          style: TextStyle(color: Color.fromARGB(200, 44, 62, 80)),
+        title: Text(
+          isSignUp ? 'انشاء حساب جديد' : 'تسجيل الدخول',
+          style: const TextStyle(color: Color.fromARGB(200, 44, 62, 80)),
         ),
         iconTheme: const IconThemeData(color: Colors.blue),
         elevation: 0,
@@ -24,67 +28,95 @@ class AuthenticationScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Form(
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
-              children: const [
-                FormInputField(
-                  label: 'ادخل بريدك الاكتروني',
-                  placeholder: 'البريد الاكتروني',
+                  children: [
+                    Form(
+                        child: Column(
+                      children: [
+                        if (isSignUp)
+                          const FormInputField(
+                            label: 'ادخل اسمك بالكامل',
+                            placeholder: 'الاسم بالكامل',
+                          ),
+                        const FormInputField(
+                          label: 'ادخل بريدك الاكتروني',
+                          placeholder: 'البريد الاكتروني',
+                        ),
+                        const FormInputField(
+                            label: 'ادخل كلمة المرور ',
+                            placeholder: 'كلمة المرور'),
+                        if (isSignUp)
+                          const FormInputField(
+                              label: 'اكد كلمة المرور ',
+                              placeholder: 'اكد كلمة المرور'),
+                      ],
+                    )),
+                    if (!isSignUp)
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Text(
+                              'نسيت كلمة المرور؟',
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 20),
+                            )
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.end,
+                        ),
+                      ),
+                    Button(
+                        text: !isSignUp ? 'تسجيل الدخول' : 'إنشاء حساب جديد',
+                        onPress: () {},
+                        secondayColor: Colors.white,
+                        primaryColor: Colors.blue),
+                    const Spliter(
+                      spliterString: 'سجل عبر',
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: OutlinedButton.icon(
+                                onPressed: () {},
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.facebookF,
+                                  color: Colors.blue,
+                                ),
+                                label: const Text('فيسبوك',
+                                    style: TextStyle(color: Colors.black))),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: OutlinedButton.icon(
+                                onPressed: () {},
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.google,
+                                  color: Colors.red,
+                                ),
+                                label: const Text('جوجل',
+                                    style: TextStyle(color: Colors.black))),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                FormInputField(
-                    label: 'ادخل كلمة المرور ', placeholder: 'كلمة المرور')
-              ],
-            )),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: const [
-                  Text(
-                    'نسيت كلمة المرور؟',
-                    style: TextStyle(color: Colors.blue, fontSize: 20),
-                  )
-                ],
-                mainAxisAlignment: MainAxisAlignment.end,
               ),
             ),
+            Text(isSignUp ? 'لديك حساب بالفعل؟' : 'لا تملك حساب؟'),
             Button(
-                text: 'تسجيل الدخول',
-                onPress: () {},
-                secondayColor: Colors.white,
-                primaryColor: Colors.blue),
-            const Spliter(
-              spliterString: 'سجل عبر',
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const FaIcon(
-                          FontAwesomeIcons.facebookF,
-                          color: Colors.blue,
-                        ),
-                        label: const Text('فيسبوك',
-                            style: TextStyle(color: Colors.black))),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const FaIcon(
-                          FontAwesomeIcons.google,
-                          color: Colors.red,
-                        ),
-                        label: const Text('جوجل',
-                            style: TextStyle(color: Colors.black))),
-                  ),
-                ),
-              ],
-            )
+                text: isSignUp ? 'تسجيل الدخول' : 'إنشاء حساب جديد',
+                onPress: () {
+                  Navigator.of(context).pushReplacementNamed(routeName,arguments: !isSignUp);
+                },
+                primaryColor: Color.fromARGB(200, 44, 62, 80),
+                secondayColor: Colors.white)
           ],
         ),
       ),

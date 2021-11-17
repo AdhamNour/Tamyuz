@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child: Column(
+                child: ListView(
                   children: [
                     const Icon(
                       Icons.stacked_bar_chart,
@@ -50,19 +50,23 @@ class WelcomeScreen extends StatelessWidget {
                       // padding: const EdgeInsets.only(),
                     )
                   ],
-                  mainAxisSize: MainAxisSize.min,
                 ),
               ),
             ),
             Button(
                 text: 'انشاء حساب',
-                onPress: () {},
+                onPress: () {
+                  Navigator.of(context).pushNamed(
+                      AuthenticationScreen.routeName,
+                      arguments: true);
+                },
                 secondayColor: const Color.fromARGB(200, 44, 62, 80),
                 primaryColor: Colors.white),
             Button(
                 text: 'تسجيل الدخول',
                 onPress: () {
-                  Navigator.of(context).pushNamed(AuthenticationScreen.routeName);
+                  Navigator.of(context)
+                      .pushNamed(AuthenticationScreen.routeName);
                 },
                 primaryColor: const Color.fromARGB(200, 44, 62, 80),
                 secondayColor: Colors.white),
