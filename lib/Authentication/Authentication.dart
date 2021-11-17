@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tamuz_application/Authentication/ForgotPasswordScreen.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
 import 'package:tamuz_application/shared/Components/Splitter.dart';
@@ -57,11 +58,15 @@ class AuthenticationScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
-                            Text(
-                              'نسيت كلمة المرور؟',
-                              style:
-                                  TextStyle(color: Colors.blue, fontSize: 20),
+                          children:  [
+                            GestureDetector(
+                              child: const Text(
+                                'نسيت كلمة المرور؟',
+                                style:
+                                    TextStyle(color: Colors.blue, fontSize: 20),
+                              ),onTap: (){
+                                Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
+                              },
                             )
                           ],
                           mainAxisAlignment: MainAxisAlignment.end,

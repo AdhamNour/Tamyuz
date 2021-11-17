@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tamuz_application/Authentication/Authentication.dart';
+import 'package:tamuz_application/Authentication/ForgotPasswordScreen.dart';
 import 'package:tamuz_application/Welcome/WelcomeScreen.dart';
 
 void main() {
@@ -29,12 +30,13 @@ class MyApp extends StatelessWidget {
               700: Color(0xFFFFFFFF),
               800: Color(0xFFFFFFFF),
               900: Color(0xFFFFFFFF),
-            },//FIXME: change this to be a variable
+            }, //FIXME: change this to be a variable
           ),
         ),
         home: const WelcomeScreen(),
         routes: {
-          AuthenticationScreen.routeName: (ctx) => const AuthenticationScreen()
+          AuthenticationScreen.routeName: (ctx) => const AuthenticationScreen(),
+          ForgotPasswordScreen.routeName: (ctx) => const ForgotPasswordScreen()
         },
         localizationsDelegates: const [
           GlobalCupertinoLocalizations.delegate,
