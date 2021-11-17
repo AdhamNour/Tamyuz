@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
 import 'package:tamuz_application/shared/Components/Splitter.dart';
@@ -26,8 +27,12 @@ class AuthenticationScreen extends StatelessWidget {
             Form(
                 child: Column(
               children: const [
-                FormInputField(label: 'ادخل بريدك الاكتروني',placeholder: 'البريد الاكتروني',),
-                FormInputField(label: 'ادخل كلمة المرور ',placeholder:'كلمة المرور')
+                FormInputField(
+                  label: 'ادخل بريدك الاكتروني',
+                  placeholder: 'البريد الاكتروني',
+                ),
+                FormInputField(
+                    label: 'ادخل كلمة المرور ', placeholder: 'كلمة المرور')
               ],
             )),
             Padding(
@@ -36,8 +41,7 @@ class AuthenticationScreen extends StatelessWidget {
                 children: const [
                   Text(
                     'نسيت كلمة المرور؟',
-                    style: TextStyle(color: Colors.blue,fontSize:20),
-                    
+                    style: TextStyle(color: Colors.blue, fontSize: 20),
                   )
                 ],
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -48,7 +52,39 @@ class AuthenticationScreen extends StatelessWidget {
                 onPress: () {},
                 secondayColor: Colors.white,
                 primaryColor: Colors.blue),
-            const Spliter(spliterString: 'سجل عبر',),
+            const Spliter(
+              spliterString: 'سجل عبر',
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: OutlinedButton.icon(
+                        onPressed: () {},
+                        icon: const FaIcon(
+                          FontAwesomeIcons.facebookF,
+                          color: Colors.blue,
+                        ),
+                        label: const Text('فيسبوك',
+                            style: TextStyle(color: Colors.black))),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: OutlinedButton.icon(
+                        onPressed: () {},
+                        icon: const FaIcon(
+                          FontAwesomeIcons.google,
+                          color: Colors.red,
+                        ),
+                        label: const Text('جوجل',
+                            style: TextStyle(color: Colors.black))),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
