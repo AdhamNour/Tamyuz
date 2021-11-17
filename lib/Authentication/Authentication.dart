@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
+import 'package:tamuz_application/shared/Components/Splitter.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({Key? key}) : super(key: key);
@@ -25,8 +26,8 @@ class AuthenticationScreen extends StatelessWidget {
             Form(
                 child: Column(
               children: const [
-                FormInputField(label: 'ادخل بريدك الاكتروني'),
-                FormInputField(label: 'ادخل كلمة المرور ')
+                FormInputField(label: 'ادخل بريدك الاكتروني',placeholder: 'البريد الاكتروني',),
+                FormInputField(label: 'ادخل كلمة المرور ',placeholder:'كلمة المرور')
               ],
             )),
             Padding(
@@ -46,7 +47,8 @@ class AuthenticationScreen extends StatelessWidget {
                 text: 'تسجيل الدخول',
                 onPress: () {},
                 secondayColor: Colors.white,
-                primaryColor: Colors.blue)
+                primaryColor: Colors.blue),
+            const Spliter(spliterString: 'سجل عبر',),
           ],
         ),
       ),

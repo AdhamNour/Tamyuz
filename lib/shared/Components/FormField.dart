@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 
 class FormInputField extends StatelessWidget {
-  final String label;
-  const FormInputField({Key? key, required this.label}) : super(key: key);
+  final String label, placeholder;
+  const FormInputField(
+      {Key? key, required this.label, required this.placeholder})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +20,11 @@ class FormInputField extends StatelessWidget {
             textDirection: TextDirection.rtl,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-                hintText: 'البريد الالكتروني',
+            decoration:  InputDecoration(
+                hintText: placeholder,
                 // labelText: 'البريد الالكتروني',
-                border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
+                border: const OutlineInputBorder(),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                         color: Color.fromARGB(200, 44, 62, 80), width: 2))),
           )
