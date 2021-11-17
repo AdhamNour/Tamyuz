@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tamuz_application/Authentication/ResetPassword.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
+import 'package:tamuz_application/shared/Screens/MessageScreen.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           Button(
               text: 'متابعة',
               onPress: () {
-                Navigator.of(context).pushNamed(ResetPasswordScreen.routeName);
+                Navigator.of(context).pushNamed(MessageScreen.routeName);
               },
               secondayColor: Colors.white,
               primaryColor: Colors.blue),
