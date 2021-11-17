@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:tamuz_application/Authentication/ResetPassword.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
 
@@ -35,7 +36,9 @@ class ForgotPasswordScreen extends StatelessWidget {
           ),
           Button(
               text: 'متابعة',
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).pushNamed(ResetPasswordScreen.routeName);
+              },
               secondayColor: Colors.white,
               primaryColor: Colors.blue),
         ],
