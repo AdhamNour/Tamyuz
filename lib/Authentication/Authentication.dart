@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tamuz_application/Authentication/ForgotPasswordScreen.dart';
+import 'package:tamuz_application/Utils/httpUtils.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
 import 'package:tamuz_application/shared/Components/Splitter.dart';
@@ -58,14 +59,16 @@ class AuthenticationScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          children:  [
+                          children: [
                             GestureDetector(
                               child: const Text(
                                 'نسيت كلمة المرور؟',
                                 style:
                                     TextStyle(color: Colors.blue, fontSize: 20),
-                              ),onTap: (){
-                                Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
+                              ),
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(ForgotPasswordScreen.routeName);
                               },
                             )
                           ],
@@ -74,7 +77,11 @@ class AuthenticationScreen extends StatelessWidget {
                       ),
                     Button(
                         text: !isSignUp ? 'تسجيل الدخول' : 'إنشاء حساب جديد',
-                        onPress: () {},
+                        onPress: () {
+                          httpUtils.signIn(
+                              email: 'adhamnourelwaffaa@gmail.com',
+                              password: '123456123456');
+                        },
                         secondayColor: Colors.white,
                         primaryColor: Colors.blue),
                     const Spliter(
@@ -118,7 +125,8 @@ class AuthenticationScreen extends StatelessWidget {
             Button(
                 text: isSignUp ? 'تسجيل الدخول' : 'إنشاء حساب جديد',
                 onPress: () {
-                  Navigator.of(context).pushReplacementNamed(routeName,arguments: !isSignUp);
+                  Navigator.of(context)
+                      .pushReplacementNamed(routeName, arguments: !isSignUp);
                 },
                 primaryColor: Color.fromARGB(200, 44, 62, 80),
                 secondayColor: Colors.white)
