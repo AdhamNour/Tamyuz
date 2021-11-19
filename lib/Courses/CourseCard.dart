@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tamuz_application/Courses/SingleCourseScreen/SingleCourseScreen.dart';
 import 'package:tamuz_application/Models/Course.dart';
 
+import 'CourseMiniDescription.dart';
+
 class CourseCard extends StatelessWidget {
   final Course course;
   const CourseCard({Key? key, required this.course}) : super(key: key);
@@ -40,39 +42,7 @@ class CourseCard extends StatelessWidget {
                     height: 90,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(course.title),
-                              Text(course.type != 'free' ? '10\$' : 'مجانية')
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          ),
-                          Row(
-                            children: [
-                              Chip(
-                                label: Text('${course.duration} ساعات'),
-                                backgroundColor: Colors.white,
-                                avatar: const Icon(
-                                  Icons.access_time,
-                                  color: Colors.orange,
-                                ),
-                              ),
-                              Chip(
-                                  label: Text(
-                                      '${course.lessons.length.toString()} درس'),
-                                  avatar: const FaIcon(
-                                    FontAwesomeIcons.youtube,
-                                    color: Colors.orange,
-                                  ),
-                                  backgroundColor: Colors.white),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
-                      ),
+                      child: CourseMiniDescription(course: course),
                     ),
                   ),
                 ),
