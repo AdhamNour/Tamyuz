@@ -47,7 +47,7 @@ class httpUtils {
     List<Course> courses = list.map((course) {
       return Course.fromMap(course);
     }).toList();
-    courses.forEach((course) async {
+    for (var course in courses) {
       var res1 = await http.get(
           Uri.parse('https://auth.tamayyuzcenter.com/api/course/${course.id}'),
           headers: {
@@ -58,7 +58,7 @@ class httpUtils {
       var courseLesson = courseData.map((e) => Lesson.fromMap(e));
       // print(courseLesson.length);
       course.lessons.addAll(courseLesson);
-    });
+    }
     return courses;
   }
 }

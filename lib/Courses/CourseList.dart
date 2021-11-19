@@ -6,7 +6,9 @@ import 'package:tamuz_application/Models/Course.dart';
 
 class CourseList extends StatelessWidget {
   final List<Course> courses;
-  const CourseList({Key? key, required this.courses}) : super(key: key);
+  final String title;
+  const CourseList({Key? key, required this.courses, required this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,9 @@ class CourseList extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'المساقات',
-            style: TextStyle(
+          Text(
+            title,
+            style: const TextStyle(
                 color: Color.fromARGB(200, 44, 62, 80),
                 fontSize: 25,
                 fontWeight: FontWeight.bold),

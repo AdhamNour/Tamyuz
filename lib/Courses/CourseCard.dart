@@ -14,8 +14,8 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Card(
-        child: ClipRRect(
+      child: ClipRRect(
+        child: Card(
           child: GestureDetector(
             onTap: () {
               Navigator.of(context)
@@ -33,49 +33,56 @@ class CourseCard extends StatelessWidget {
                   },
                   fit: BoxFit.cover,
                 ),
-                footer: Container(
-                  color: Colors.white,
-                  height: 82,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [Text(course.title), Text('10\$')],
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        ),
-                        Row(
-                          children: [
-                            Chip(
-                              label: Text('${course.duration} ساعات'),
-                              backgroundColor: Colors.white,
-                              avatar: const Icon(
-                                Icons.access_time,
-                                color: Colors.orange,
-                              ),
-                            ),
-                            Chip(
-                                label: Text('${course.lessons.length.toString()} درس'),
-                                avatar: const FaIcon(
-                                  FontAwesomeIcons.youtube,
+                footer: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Container(
+                    color: Colors.white,
+                    height: 90,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(course.title),
+                              Text(course.type != 'free' ? '10\$' : 'مجانية')
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          ),
+                          Row(
+                            children: [
+                              Chip(
+                                label: Text('${course.duration} ساعات'),
+                                backgroundColor: Colors.white,
+                                avatar: const Icon(
+                                  Icons.access_time,
                                   color: Colors.orange,
                                 ),
-                                backgroundColor: Colors.white),
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
+                              ),
+                              Chip(
+                                  label: Text(
+                                      '${course.lessons.length.toString()} درس'),
+                                  avatar: const FaIcon(
+                                    FontAwesomeIcons.youtube,
+                                    color: Colors.orange,
+                                  ),
+                                  backgroundColor: Colors.white),
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          elevation: 1,
+          margin: const EdgeInsets.all(0),
         ),
-        elevation: 1,
-        margin: const EdgeInsets.all(0),
+        borderRadius: const BorderRadius.all(Radius.circular(15)),
       ),
     );
   }

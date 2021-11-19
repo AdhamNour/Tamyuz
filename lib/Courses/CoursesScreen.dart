@@ -75,12 +75,15 @@ class CoursesScreen extends StatelessWidget {
                         children: [
                           CourseList(
                             courses: snapshot.data!,
+                            title: 'الأكثر مشاهدة',
+                          ),
+                          CourseList(
+                            courses: snapshot.data!.where((element) => element.type=='free').toList(),
+                            title: 'مساقات مجانية',
                           ),
                           CourseList(
                             courses: snapshot.data!,
-                          ),
-                          CourseList(
-                            courses: snapshot.data!,
+                            title: 'احدث المساقات',
                           ),
                         ],
                       )),
