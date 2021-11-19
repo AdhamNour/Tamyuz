@@ -20,13 +20,12 @@ class FormInputField extends StatelessWidget {
             textDirection: TextDirection.rtl,
           ),
           TextFormField(
-            decoration:  InputDecoration(
-                hintText: placeholder,
-                border: const OutlineInputBorder(),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Color.fromARGB(200, 44, 62, 80), width: 2))),
+            decoration: InputDecoration(
+              hintText: placeholder,
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+              focusedBorder: InputBorder.none,
+            ),
           )
         ],
         crossAxisAlignment: CrossAxisAlignment.start,

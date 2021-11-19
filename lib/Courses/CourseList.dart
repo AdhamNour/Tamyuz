@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:tamuz_application/Courses/CourseCard.dart';
 import 'package:tamuz_application/Models/Course.dart';
 
 class CourseList extends StatelessWidget {
@@ -20,23 +21,31 @@ class CourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Text('المساقات'),
-        Expanded(
-          child: ListView.builder(
-            itemBuilder: (ctx, i) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(Courses[i].title),
-              );
-            },
-            itemCount: Courses.length,
-            scrollDirection: Axis.horizontal,shrinkWrap: true,
+    return SizedBox(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text(
+            'المساقات',
+            style: TextStyle(
+                color: Color.fromARGB(200, 44, 62, 80),
+                fontSize: 25,
+                fontWeight: FontWeight.bold),
           ),
-        )
-      ],
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (ctx, i) {
+                return CourseCard(course: Courses[i]);
+              },
+              itemCount: Courses.length,
+              scrollDirection: Axis.horizontal,
+              // shrinkWrap: true,
+            ),
+          )
+        ],
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      height: 300,
     );
   }
 }
