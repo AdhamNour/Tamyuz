@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tamuz_application/Authentication/ForgotPasswordScreen.dart';
+import 'package:tamuz_application/Courses/CoursesScreen.dart';
 import 'package:tamuz_application/Utils/httpUtils.dart';
 import 'package:tamuz_application/shared/Components/Button.dart';
 import 'package:tamuz_application/shared/Components/FormField.dart';
@@ -78,9 +79,9 @@ class AuthenticationScreen extends StatelessWidget {
                     Button(
                         text: !isSignUp ? 'تسجيل الدخول' : 'إنشاء حساب جديد',
                         onPress: () {
-                          httpUtils.signIn(
-                              email: 'adhamnourelwaffaa@gmail.com',
-                              password: '123456123456');
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              CoursesScreen.routeName,
+                              (route) => !Navigator.of(context).canPop());
                         },
                         secondayColor: Colors.white,
                         primaryColor: Colors.blue),
