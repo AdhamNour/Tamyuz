@@ -7,6 +7,7 @@ import 'package:tamuz_application/Welcome/WelcomeScreen.dart';
 import 'package:tamuz_application/shared/Screens/MessageScreen.dart';
 
 import 'Courses/CoursesScreen.dart';
+import 'Courses/SingleCourseScreen/SingleCourseScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
           ResetPasswordScreen.routeName: (ctx) => const ResetPasswordScreen(),
           MessageScreen.routeName: (ctx) => const MessageScreen(),
           CoursesScreen.routeName: (ctx) => const CoursesScreen(),
+          SingleCourseScreen.routeName: (ctx) => const SingleCourseScreen(),
         },
         localizationsDelegates: const [
           GlobalCupertinoLocalizations.delegate,
