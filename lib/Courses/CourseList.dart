@@ -5,19 +5,8 @@ import 'package:tamuz_application/Courses/CourseCard.dart';
 import 'package:tamuz_application/Models/Course.dart';
 
 class CourseList extends StatelessWidget {
-  final List<Course> Courses = [];
-  CourseList({Key? key}) : super(key: key) {
-    for (var i = 0; i < 10; i++) {
-      Courses.add(Course(
-          id: i,
-          title: 'title $i',
-          description: 'description $i',
-          type: 'type',
-          duration: '32',
-          created_at: '2021-11-17T10:03:57.000000Z',
-          updated_at: '2021-11-17T10:03:57.000000Z'));
-    }
-  }
+  final List<Course> courses;
+  const CourseList({Key? key, required this.courses}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +24,9 @@ class CourseList extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemBuilder: (ctx, i) {
-                return CourseCard(course: Courses[i]);
+                return CourseCard(course: courses[i]);
               },
-              itemCount: Courses.length,
+              itemCount: courses.length,
               scrollDirection: Axis.horizontal,
               // shrinkWrap: true,
             ),

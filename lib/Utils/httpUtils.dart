@@ -5,8 +5,11 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:http/http.dart' as http;
+import 'package:tamuz_application/Models/Course.dart';
+import 'package:tamuz_application/Models/Lesson.dart';
 
 class httpUtils {
+  static String token = '5|nQgEDPHH2KXb1yj80lhNnYiYgpIur9p3uBiExXoa';
   static Future<String> getXSFRToken() async {
     var res = await http.get(
         Uri.parse('https://auth.tamayyuzcenter.com/sanctum/csrf-cookie/'),
@@ -31,5 +34,31 @@ class httpUtils {
     //     body: jsonEncode({'is_from_phone': 1}));
     // print(res.body);
     return true;
+  }
+
+  static Future<List<Course>> getCourses() async {
+    var res = await http.get(
+        Uri.parse('https://auth.tamayyuzcenter.com/api/courses'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token'
+        });
+    List<dynamic> list = jsonDecode(res.body);
+    List<Course> courses = list.map((course) {
+      return Course.fromMap(course);
+    }).toList();
+    courses.forEach((course) async {
+      var res1 = await http.get(
+          Uri.parse('https://auth.tamayyuzcenter.com/api/course/${course.id}'),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token'
+          });
+      List<dynamic> courseData = jsonDecode(res1.body)['lessons'];
+      var courseLesson = courseData.map((e) => Lesson.fromMap(e));
+      // print(courseLesson.length);
+      course.lessons.addAll(courseLesson);
+    });
+    return courses;
   }
 }

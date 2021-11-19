@@ -55,7 +55,7 @@ class CourseCard extends StatelessWidget {
                               ),
                             ),
                             Chip(
-                                label: Text('${course.id.toString()} درس'),
+                                label: Text('${course.lessons.length.toString()} درس'),
                                 avatar: const FaIcon(
                                   FontAwesomeIcons.youtube,
                                   color: Colors.orange,
