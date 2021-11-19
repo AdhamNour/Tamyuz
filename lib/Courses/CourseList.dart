@@ -24,7 +24,7 @@ class CourseList extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Text('المساقات'),
-        Flexible(
+        Expanded(
           child: ListView.builder(
             itemBuilder: (ctx, i) {
               return Padding(
@@ -33,7 +33,7 @@ class CourseList extends StatelessWidget {
               );
             },
             itemCount: Courses.length,
-            scrollDirection: Axis.horizontal,
+            scrollDirection: Axis.horizontal,shrinkWrap: true,
           ),
         )
       ],
